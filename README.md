@@ -15,7 +15,7 @@ Partners can configure their tags on [Google's Console](https://tagmanager.googl
 2. Configure your tag with the proper API Key and desired settings. 
 3. Configure the trigger to load the SDK as the page is loaded. 
 4. Deploy the tag. 
-5. Verify and QA, you should see window.mParticle loaded on the your webpage.
+5. Verify and QA, you should see window.mParticle loaded on your webpage.
 
 This is a public repository containing the TPL file necessary for Google to support Rokt's application onto the Tag Manager Marketplace.
 

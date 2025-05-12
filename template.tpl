@@ -137,6 +137,8 @@ const mParticleObject = {
         useCookieStorage: data.useCookieStorage,
         customFlags: {
           "Rokt.integrationName": "google",
+          "Rokt.noFunctional": data.noFunctional,
+          "Rokt.noTargeting": data.noTargeting,
         }
     },
 };

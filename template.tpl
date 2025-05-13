@@ -135,6 +135,11 @@ const mParticleObject = {
         dataPlan: dataPlanObject,
         logLevel: data.logLevel == 'none' ? undefined : data.logLevel,
         useCookieStorage: data.useCookieStorage,
+        customFlags: {
+          "Rokt.integrationName": "google",
+          "Rokt.noFunctional": data.noFunctional,
+          "Rokt.noTargeting": data.noTargeting,
+        }
     },
 };
 

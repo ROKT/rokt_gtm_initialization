@@ -43,67 +43,98 @@ ___TEMPLATE_PARAMETERS___
     "notSetText": "Required!"
   },
   {
-    "type": "SELECT",
-    "name": "isDevelopment",
-    "displayName": "Environment",
-    "macrosInSelect": false,
-    "selectItems": [
+    "type": "GROUP",
+    "name": "Data Plan",
+    "displayName": "Data Plan",
+    "groupStyle": "ZIPPY_CLOSED",
+    "subParams": [
       {
-        "value": false,
-        "displayValue": "Production"
+        "type": "TEXT",
+        "name": "planId",
+        "displayName": "Data Plan ID",
+        "simpleValueType": true,
+        "help": "Data Plan ID and Version allow you to select specific data plans to validate and control your data."
       },
       {
-        "value": true,
-        "displayValue": "Development"
+        "type": "TEXT",
+        "name": "planVersion",
+        "displayName": "Data Plan Version",
+        "simpleValueType": true,
+        "help": "Data Plan ID and Version allow you to select specific data plans to validate and control your mParticle data."
       }
     ],
-    "simpleValueType": true,
-    "defaultValue": false,
-    "help": "Enable development mode to see events in livestream. Enable production for increased data privacy. Read more about this in the mParticle docs."
+    "help": "Data plans help you improve data quality and control across the enterprise:"
   },
   {
-    "type": "SELECT",
-    "name": "logLevel",
-    "displayName": "Log Level",
-    "macrosInSelect": false,
-    "selectItems": [
+    "type": "GROUP",
+    "name": "More Integration Options",
+    "groupStyle": "ZIPPY_CLOSED",
+    "subParams": [
       {
-        "value": "none",
-        "displayValue": "No Logging"
+        "type": "CHECKBOX",
+        "name": "useCookieStorage",
+        "checkboxText": "Use Cookies",
+        "simpleValueType": true,
+        "help": "Flag to set the persistence storage to cookies. Defaults to false (the SDK will use local storage).",
+        "displayName": "Persistence"
       },
       {
-        "value": "warning",
-        "displayValue": "Warning"
+        "type": "SELECT",
+        "name": "isDevelopment",
+        "displayName": "Environment",
+        "macrosInSelect": false,
+        "selectItems": [
+          {
+            "value": false,
+            "displayValue": "Production"
+          },
+          {
+            "value": true,
+            "displayValue": "Development"
+          }
+        ],
+        "simpleValueType": true,
+        "defaultValue": false,
+        "help": "Enable development mode to see events in livestream. Enable production for increased data privacy. Read more about this in the mParticle docs."
       },
       {
-        "value": "verbose",
-        "displayValue": "Verbose"
+        "type": "SELECT",
+        "name": "logLevel",
+        "displayName": "Log Level",
+        "macrosInSelect": false,
+        "selectItems": [
+          {
+            "value": "none",
+            "displayValue": "No Logging"
+          },
+          {
+            "value": "warning",
+            "displayValue": "Warning"
+          },
+          {
+            "value": "verbose",
+            "displayValue": "Verbose"
+          }
+        ],
+        "simpleValueType": true,
+        "help": "Web SDK\u0027s custom logger can be enabled by selecting the desired level. Read more about the different types of logging available in the mParticle docs."
+      },
+      {
+        "type": "CHECKBOX",
+        "name": "noFunctional",
+        "checkboxText": "Disallow Functional Cookies",
+        "simpleValueType": true,
+        "help": "Should dynamically reflect your user\u0027s functional cookie consent state. Accepts a true or false Boolean."
+      },
+      {
+        "type": "CHECKBOX",
+        "name": "noTargeting",
+        "checkboxText": "Disallow Targeting Cookies",
+        "simpleValueType": true,
+        "help": "Should dynamically reflect your user\u0027s targeting cookie consent state. Accepts a true or false Boolean."
       }
     ],
-    "simpleValueType": true,
-    "help": "Web SDK's custom logger can be enabled by selecting the desired level. Read more about the different types of logging available in the mParticle docs."
-  },
-  {
-    "type": "TEXT",
-    "name": "planId",
-    "displayName": "Data Plan ID",
-    "simpleValueType": true,
-    "help": "Data Plan ID and Version allow you to select specific data plans to validate and control your data."
-  },
-  {
-    "type": "TEXT",
-    "name": "planVersion",
-    "displayName": "Data Plan Version",
-    "simpleValueType": true,
-    "help": "Data Plan ID and Version allow you to select specific data plans to validate and control your mParticle data."
-  },
-  {
-    "type": "CHECKBOX",
-    "name": "useCookieStorage",
-    "checkboxText": "Use Cookies",
-    "simpleValueType": true,
-    "help": "Flag to set the persistence storage to cookies. Defaults to false (the SDK will use local storage).",
-    "displayName": "Persistence"
+    "displayName": "More Integration Options"
   }
 ]
 

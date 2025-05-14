@@ -388,10 +388,6 @@ ___WEB_PERMISSIONS___
               {
                 "type": 1,
                 "string": "https://*.rokt.com/*"
-              },
-              {
-                "type": 1,
-                "string": "https://*.mparticle.com/*"
               }
             ]
           }

@@ -94,8 +94,8 @@ ___TEMPLATE_PARAMETERS___
           }
         ],
         "simpleValueType": true,
-        "defaultValue": false,
-        "help": "Enable development mode to see events in livestream. Enable production for increased data privacy. Read more about this in the mParticle docs."
+        "defaultValue": true,
+        "help": "Enable development mode to troubleshoot events for this integration. Enable production for increased data privacy. Reach out to your account manager for any questions or concerns."
       },
       {
         "type": "SELECT",
@@ -117,21 +117,21 @@ ___TEMPLATE_PARAMETERS___
           }
         ],
         "simpleValueType": true,
-        "help": "Web SDK\u0027s custom logger can be enabled by selecting the desired level. Read more about the different types of logging available in the mParticle docs."
+        "help": "Web SDK's custom logger can be enabled by selecting the desired level."
       },
       {
         "type": "CHECKBOX",
         "name": "noFunctional",
         "checkboxText": "Disallow Functional Cookies",
         "simpleValueType": true,
-        "help": "Should dynamically reflect your user\u0027s functional cookie consent state. Accepts a true or false Boolean."
+        "help": "Should dynamically reflect your user's functional cookie consent state. Accepts a true or false Boolean."
       },
       {
         "type": "CHECKBOX",
         "name": "noTargeting",
         "checkboxText": "Disallow Targeting Cookies",
         "simpleValueType": true,
-        "help": "Should dynamically reflect your user\u0027s targeting cookie consent state. Accepts a true or false Boolean."
+        "help": "Should dynamically reflect your user's targeting cookie consent state. Accepts a true or false Boolean."
       }
     ],
     "displayName": "More Integration Options"

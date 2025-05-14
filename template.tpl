@@ -72,7 +72,7 @@ ___TEMPLATE_PARAMETERS___
         ],
         "simpleValueType": true,
         "defaultValue": true,
-        "help": "Enable development mode to troubleshoot events for this integration. Enable production for increased data privacy. Reach out to your account manager for any questions or concerns."
+        "help": "Enable development mode to troubleshoot events for this integration. Enable production once you have completed testing. Reach out to your account manager for any questions or concerns."
       },
       {
         "type": "SELECT",

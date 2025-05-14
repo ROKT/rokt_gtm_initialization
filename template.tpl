@@ -43,67 +43,75 @@ ___TEMPLATE_PARAMETERS___
     "notSetText": "Required!"
   },
   {
-    "type": "SELECT",
-    "name": "isDevelopment",
-    "displayName": "Environment",
-    "macrosInSelect": false,
-    "selectItems": [
+    "type": "GROUP",
+    "name": "More Integration Options",
+    "groupStyle": "ZIPPY_CLOSED",
+    "subParams": [
       {
-        "value": false,
-        "displayValue": "Production"
+        "type": "CHECKBOX",
+        "name": "useCookieStorage",
+        "checkboxText": "Use Cookies",
+        "simpleValueType": true,
+        "help": "Flag to set the persistence storage to cookies. Defaults to false (the SDK will use local storage).",
+        "displayName": "Persistence"
       },
       {
-        "value": true,
-        "displayValue": "Development"
+        "type": "SELECT",
+        "name": "isDevelopment",
+        "displayName": "Environment",
+        "macrosInSelect": false,
+        "selectItems": [
+          {
+            "value": false,
+            "displayValue": "Production"
+          },
+          {
+            "value": true,
+            "displayValue": "Development"
+          }
+        ],
+        "simpleValueType": true,
+        "defaultValue": true,
+        "help": "Enable development mode to troubleshoot events for this integration. Enable production once you have completed testing. Reach out to your account manager for any questions or concerns."
+      },
+      {
+        "type": "SELECT",
+        "name": "logLevel",
+        "displayName": "Log Level",
+        "macrosInSelect": false,
+        "selectItems": [
+          {
+            "value": "none",
+            "displayValue": "No Logging"
+          },
+          {
+            "value": "warning",
+            "displayValue": "Warning"
+          },
+          {
+            "value": "verbose",
+            "displayValue": "Verbose"
+          }
+        ],
+        "simpleValueType": true,
+        "help": "Web SDK's custom logger can be enabled by selecting the desired level.  `Verbose` should be selected when debugging. Default is Warning"
+      },
+      {
+        "type": "CHECKBOX",
+        "name": "noFunctional",
+        "checkboxText": "Disallow Functional Cookies",
+        "simpleValueType": true,
+        "help": "Should dynamically reflect your user's functional cookie consent state. Accepts a true or false Boolean."
+      },
+      {
+        "type": "CHECKBOX",
+        "name": "noTargeting",
+        "checkboxText": "Disallow Targeting Cookies",
+        "simpleValueType": true,
+        "help": "Should dynamically reflect your user's targeting cookie consent state. Accepts a true or false Boolean."
       }
     ],
-    "simpleValueType": true,
-    "defaultValue": false,
-    "help": "Enable development mode to see events in livestream. Enable production for increased data privacy. Read more about this in the mParticle docs."
-  },
-  {
-    "type": "SELECT",
-    "name": "logLevel",
-    "displayName": "Log Level",
-    "macrosInSelect": false,
-    "selectItems": [
-      {
-        "value": "none",
-        "displayValue": "No Logging"
-      },
-      {
-        "value": "warning",
-        "displayValue": "Warning"
-      },
-      {
-        "value": "verbose",
-        "displayValue": "Verbose"
-      }
-    ],
-    "simpleValueType": true,
-    "help": "Web SDK's custom logger can be enabled by selecting the desired level. Read more about the different types of logging available in the mParticle docs."
-  },
-  {
-    "type": "TEXT",
-    "name": "planId",
-    "displayName": "Data Plan ID",
-    "simpleValueType": true,
-    "help": "Data Plan ID and Version allow you to select specific data plans to validate and control your data."
-  },
-  {
-    "type": "TEXT",
-    "name": "planVersion",
-    "displayName": "Data Plan Version",
-    "simpleValueType": true,
-    "help": "Data Plan ID and Version allow you to select specific data plans to validate and control your mParticle data."
-  },
-  {
-    "type": "CHECKBOX",
-    "name": "useCookieStorage",
-    "checkboxText": "Use Cookies",
-    "simpleValueType": true,
-    "help": "Flag to set the persistence storage to cookies. Defaults to false (the SDK will use local storage).",
-    "displayName": "Persistence"
+    "displayName": "More Integration Options"
   }
 ]
 
@@ -120,19 +128,11 @@ const queryPermission = require('queryPermission');
 const makeNumber = require('makeNumber');
 log('data =', data);
 
-const dataPlanObject = {};
-
-if (data.planId && data.planVersion) {
-  dataPlanObject.planId = data.planId; 
-  dataPlanObject.planVersion = makeNumber(data.planVersion); 
-} 
-
 // mParticleConfig
 
 const mParticleObject = {
     config: {
         isDevelopmentMode: data.isDevelopment,
-        dataPlan: dataPlanObject,
         logLevel: data.logLevel == 'none' ? undefined : data.logLevel,
         useCookieStorage: data.useCookieStorage,
         customFlags: {
@@ -388,10 +388,6 @@ ___WEB_PERMISSIONS___
               {
                 "type": 1,
                 "string": "https://*.rokt.com/*"
-              },
-              {
-                "type": 1,
-                "string": "https://*.mparticle.com/*"
               }
             ]
           }
@@ -413,23 +409,14 @@ scenarios:
   code: "const mockData = {\n  apiKey: \"testApiKey\", \n  isDevelopment: false, \n\
     \  \n};\n\n// Call runCode to run the template's code.\nrunCode(mockData);\n\n\
     const assertmParticleObject = {\n      config: {\n        isDevelopmentMode: false,\n\
-    \        dataPlan: {}, \n        logLevel: undefined\n      },\n  };\n\n\n// Verify\
+    \        logLevel: undefined\n      },\n  };\n\n\n// Verify\
     \ that the tag finished successfully.\nassertApi('setInWindow').wasCalledWith(\"\
     mParticle\", assertmParticleObject, true);"
-- name: Data plan properly configured and set when provided
-  code: "const mockData = {\n  apiKey: \"testApiKey\", \n  isDevelopment: false, \n\
-    \  planId: \"DPlan1\", \n  planVersion: \"1.0.0\"\n};\n\n// Call runCode to run\
-    \ the template's code.\nrunCode(mockData);\n\nconst assertmParticleObject = {\n\
-    \      config: {\n        isDevelopmentMode: false,\n        dataPlan: {\n   \
-    \       planId: \"DPlan1\", \n          planVersion:\"1.0.0\"\n        }, \n \
-    \       logLevel: undefined\n      },\n  };\n\n\n// Verify that the tag finished\
-    \ successfully.\nassertApi('setInWindow').wasCalledWith(\"mParticle\", assertmParticleObject,\
-    \ true);"
 - name: LogLevel properly set when provided
   code: "const mockData = {\n  apiKey: \"testApiKey\", \n  isDevelopment: true, \n\
     \  logLevel: \"verbose\"\n};\n\n// Call runCode to run the template's code.\n\
     runCode(mockData);\n\nconst assertmParticleObject = {\n      config: {\n     \
-    \   isDevelopmentMode: true,\n        dataPlan: {}, \n        logLevel: \"verbose\"\
+    \   isDevelopmentMode: true,\n        logLevel: \"verbose\"\
     \n      },\n  };\n\n\n// Verify that the tag finished successfully.\nassertApi('setInWindow').wasCalledWith(\"\
     mParticle\", assertmParticleObject, true);"
 setup: "const log = require('logToConsole'); \n"

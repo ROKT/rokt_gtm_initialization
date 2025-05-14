@@ -44,29 +44,6 @@ ___TEMPLATE_PARAMETERS___
   },
   {
     "type": "GROUP",
-    "name": "Data Plan",
-    "displayName": "Data Plan",
-    "groupStyle": "ZIPPY_CLOSED",
-    "subParams": [
-      {
-        "type": "TEXT",
-        "name": "planId",
-        "displayName": "Data Plan ID",
-        "simpleValueType": true,
-        "help": "Data Plan ID and Version allow you to select specific data plans to validate and control your data."
-      },
-      {
-        "type": "TEXT",
-        "name": "planVersion",
-        "displayName": "Data Plan Version",
-        "simpleValueType": true,
-        "help": "Data Plan ID and Version allow you to select specific data plans to validate and control your mParticle data."
-      }
-    ],
-    "help": "Data plans help you improve data quality and control across the enterprise:"
-  },
-  {
-    "type": "GROUP",
     "name": "More Integration Options",
     "groupStyle": "ZIPPY_CLOSED",
     "subParams": [
@@ -151,19 +128,11 @@ const queryPermission = require('queryPermission');
 const makeNumber = require('makeNumber');
 log('data =', data);
 
-const dataPlanObject = {};
-
-if (data.planId && data.planVersion) {
-  dataPlanObject.planId = data.planId; 
-  dataPlanObject.planVersion = makeNumber(data.planVersion); 
-} 
-
 // mParticleConfig
 
 const mParticleObject = {
     config: {
         isDevelopmentMode: data.isDevelopment,
-        dataPlan: dataPlanObject,
         logLevel: data.logLevel == 'none' ? undefined : data.logLevel,
         useCookieStorage: data.useCookieStorage,
         customFlags: {
@@ -444,23 +413,14 @@ scenarios:
   code: "const mockData = {\n  apiKey: \"testApiKey\", \n  isDevelopment: false, \n\
     \  \n};\n\n// Call runCode to run the template's code.\nrunCode(mockData);\n\n\
     const assertmParticleObject = {\n      config: {\n        isDevelopmentMode: false,\n\
-    \        dataPlan: {}, \n        logLevel: undefined\n      },\n  };\n\n\n// Verify\
+    \        logLevel: undefined\n      },\n  };\n\n\n// Verify\
     \ that the tag finished successfully.\nassertApi('setInWindow').wasCalledWith(\"\
     mParticle\", assertmParticleObject, true);"
-- name: Data plan properly configured and set when provided
-  code: "const mockData = {\n  apiKey: \"testApiKey\", \n  isDevelopment: false, \n\
-    \  planId: \"DPlan1\", \n  planVersion: \"1.0.0\"\n};\n\n// Call runCode to run\
-    \ the template's code.\nrunCode(mockData);\n\nconst assertmParticleObject = {\n\
-    \      config: {\n        isDevelopmentMode: false,\n        dataPlan: {\n   \
-    \       planId: \"DPlan1\", \n          planVersion:\"1.0.0\"\n        }, \n \
-    \       logLevel: undefined\n      },\n  };\n\n\n// Verify that the tag finished\
-    \ successfully.\nassertApi('setInWindow').wasCalledWith(\"mParticle\", assertmParticleObject,\
-    \ true);"
 - name: LogLevel properly set when provided
   code: "const mockData = {\n  apiKey: \"testApiKey\", \n  isDevelopment: true, \n\
     \  logLevel: \"verbose\"\n};\n\n// Call runCode to run the template's code.\n\
     runCode(mockData);\n\nconst assertmParticleObject = {\n      config: {\n     \
-    \   isDevelopmentMode: true,\n        dataPlan: {}, \n        logLevel: \"verbose\"\
+    \   isDevelopmentMode: true,\n        logLevel: \"verbose\"\
     \n      },\n  };\n\n\n// Verify that the tag finished successfully.\nassertApi('setInWindow').wasCalledWith(\"\
     mParticle\", assertmParticleObject, true);"
 setup: "const log = require('logToConsole'); \n"

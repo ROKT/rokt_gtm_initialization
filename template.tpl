@@ -94,7 +94,7 @@ ___TEMPLATE_PARAMETERS___
           }
         ],
         "simpleValueType": true,
-        "help": "Web SDK's custom logger can be enabled by selecting the desired level."
+        "help": "Web SDK's custom logger can be enabled by selecting the desired level.  `Verbose` should be selected when debugging. Default is Warning"
       },
       {
         "type": "CHECKBOX",

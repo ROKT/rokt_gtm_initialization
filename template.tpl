@@ -135,11 +135,11 @@ const mParticleObject = {
         isDevelopmentMode: data.isDevelopment,
         logLevel: data.logLevel == 'none' ? undefined : data.logLevel,
         useCookieStorage: data.useCookieStorage,
-        customFlags: {
-          "Rokt.integrationName": "google",
-          "Rokt.noFunctional": data.noFunctional,
-          "Rokt.noTargeting": data.noTargeting,
-        }
+        launcherOptions: {
+            integrationName: "google",
+            noFunctional: data.noFunctional,
+            noTargeting: data.noTargeting,
+        },
     },
 };
 

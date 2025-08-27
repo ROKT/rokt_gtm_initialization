@@ -26,6 +26,7 @@ ___INFO___
 }
 
 
+
 ___TEMPLATE_PARAMETERS___
 
 [
@@ -47,6 +48,21 @@ ___TEMPLATE_PARAMETERS___
     "name": "More Integration Options",
     "groupStyle": "ZIPPY_CLOSED",
     "subParams": [
+      {
+        "type": "TEXT",
+        "name": "roktDomain",
+        "displayName": "First Party Domain Name",
+        "simpleValueType": true,
+        "help": "If you set up a custom domain for a first party domain integration, please enter your domain URL. \n\u003cbr\u003e\n\u003cbr\u003e\nExample: https://apps.rokt-api.com",
+        "valueValidators": [
+          {
+            "type": "REGEX",
+            "args": [
+              "^https:\\/\\/[a-zA-Z0-9-]+(\\.[a-zA-Z0-9-]+)+$"
+            ]
+          }
+        ]
+      },
       {
         "type": "CHECKBOX",
         "name": "useCookieStorage",
@@ -94,21 +110,21 @@ ___TEMPLATE_PARAMETERS___
           }
         ],
         "simpleValueType": true,
-        "help": "Web SDK's custom logger can be enabled by selecting the desired level.  `Verbose` should be selected when debugging. Default is Warning"
+        "help": "Web SDK\u0027s custom logger can be enabled by selecting the desired level.  `Verbose` should be selected when debugging. Default is Warning"
       },
       {
         "type": "CHECKBOX",
         "name": "noFunctional",
         "checkboxText": "Disallow Functional Cookies",
         "simpleValueType": true,
-        "help": "Should dynamically reflect your user's functional cookie consent state. Accepts a true or false Boolean."
+        "help": "Should dynamically reflect your user\u0027s functional cookie consent state. Accepts a true or false Boolean."
       },
       {
         "type": "CHECKBOX",
         "name": "noTargeting",
         "checkboxText": "Disallow Targeting Cookies",
         "simpleValueType": true,
-        "help": "Should dynamically reflect your user's targeting cookie consent state. Accepts a true or false Boolean."
+        "help": "Should dynamically reflect your user\u0027s targeting cookie consent state. Accepts a true or false Boolean."
       }
     ],
     "displayName": "More Integration Options"
@@ -220,8 +236,11 @@ setInWindow("mParticle", mParticleObject, true);
     setInWindow("mParticle", mParticleObject, true); 
   
     //build and inject the script tag
+    const url = (data.roktDomain && data.roktDomain !== "") ? data.roktDomain : "https://apps.rokt-api.com";
+
     const scriptUrl = (
-        "https://apps.rokt-api.com/js/v2/"  + apiKey + "/app.js");
+        url + "/js/v2/" + apiKey + "/app.js");
+  
 
     const onSuccess = () => {
         log('mParticle: Script loaded successfully.');

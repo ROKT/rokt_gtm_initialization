@@ -110,21 +110,21 @@ ___TEMPLATE_PARAMETERS___
           }
         ],
         "simpleValueType": true,
-        "help": "Web SDK\u0027s custom logger can be enabled by selecting the desired level.  `Verbose` should be selected when debugging. Default is Warning"
+        "help": "Web SDK's custom logger can be enabled by selecting the desired level.  `Verbose` should be selected when debugging. Default is Warning"
       },
       {
         "type": "CHECKBOX",
         "name": "noFunctional",
         "checkboxText": "Disallow Functional Cookies",
         "simpleValueType": true,
-        "help": "Should dynamically reflect your user\u0027s functional cookie consent state. Accepts a true or false Boolean."
+        "help": "Should dynamically reflect your user's functional cookie consent state. Accepts a true or false Boolean."
       },
       {
         "type": "CHECKBOX",
         "name": "noTargeting",
         "checkboxText": "Disallow Targeting Cookies",
         "simpleValueType": true,
-        "help": "Should dynamically reflect your user\u0027s targeting cookie consent state. Accepts a true or false Boolean."
+        "help": "Should dynamically reflect your user's targeting cookie consent state. Accepts a true or false Boolean."
       }
     ],
     "displayName": "More Integration Options"

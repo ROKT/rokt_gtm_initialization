@@ -15,7 +15,7 @@
 homepage: 'https://www.rokt.com'
 documentation: 'https://docs.rokt.com/docs/developers/integration-guides/third-party-integrations/google-tag-manager/google-tag-template'
 versions:
-  - sha: e852ebed5e8f1d4a7b4f1644c753d9111ff9c20b
+  - sha: 1371fd77371732904fa263491bdbbc015ec7dba2
     changeNotes: Add first party domain support
   - sha: be739c57f7df2a99a5ee9dd00861961cb4c6c225
     changeNotes: Add launcher options to init flow

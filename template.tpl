@@ -226,7 +226,10 @@ setInWindow("mParticle", mParticleObject, true);
             if (base) {
                 method = base + '.' + method;
             }
-            var args = callInWindow("Array.prototype.slice.call", arguments);
+            var args = [];
+            for (var i = 0; i < arguments.length; i++) {
+              args.push(arguments[i]);
+            }
             args.unshift(method);
             mParticleObject.config.rq.push(args);
         };

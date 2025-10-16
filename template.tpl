@@ -49,21 +49,6 @@ ___TEMPLATE_PARAMETERS___
     "groupStyle": "ZIPPY_CLOSED",
     "subParams": [
       {
-        "type": "TEXT",
-        "name": "roktDomain",
-        "displayName": "First Party Domain Name",
-        "simpleValueType": true,
-        "help": "If you set up a custom domain for a first party domain integration, please enter your domain URL. \n\u003cbr\u003e\n\u003cbr\u003e\nExample: https://apps.rokt-api.com",
-        "valueValidators": [
-          {
-            "type": "REGEX",
-            "args": [
-              "^https:\\/\\/[a-zA-Z0-9-]+(\\.[a-zA-Z0-9-]+)+$"
-            ]
-          }
-        ]
-      },
-      {
         "type": "CHECKBOX",
         "name": "useCookieStorage",
         "checkboxText": "Use Cookies",
@@ -239,7 +224,7 @@ setInWindow("mParticle", mParticleObject, true);
     setInWindow("mParticle", mParticleObject, true); 
   
     //build and inject the script tag
-    const url = (data.roktDomain && data.roktDomain !== "") ? data.roktDomain : "https://apps.rokt-api.com";
+    const url = "https://apps.rokt-api.com";
 
     const scriptUrl = (
         url + "/js/v2/" + apiKey + "/app.js");

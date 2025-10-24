@@ -127,6 +127,7 @@ const copyFromWindow = require('copyFromWindow');
 const callInWindow = require('callInWindow'); 
 const queryPermission = require('queryPermission');
 const makeNumber = require('makeNumber');
+const dataLayerPush = require('createQueue')('dataLayer');
 log('data =', data);
 
 // mParticleConfig
@@ -232,6 +233,7 @@ setInWindow("mParticle", mParticleObject, true);
 
     const onSuccess = () => {
         log('mParticle: Script loaded successfully.');
+        dataLayerPush({event:'roktInitComplete'});
         data.gtmOnSuccess();
     };
 
@@ -365,6 +367,45 @@ ___WEB_PERMISSIONS___
                     "boolean": true
                   }
                 ]
+                  },
+                  {
+                    "type": 3,
+                    "mapKey": [
+                      {
+                        "type": 1,
+                        "string": "key"
+                      },
+                      {
+                        "type": 1,
+                        "string": "read"
+                      },
+                      {
+                        "type": 1,
+                        "string": "write"
+                      },
+                      {
+                        "type": 1,
+                        "string": "execute"
+                      }
+                    ],
+                    "mapValue": [
+                      {
+                        "type": 1,
+                        "string": "dataLayer"
+                      },
+                      {
+                        "type": 8,
+                        "boolean": true
+                      },
+                      {
+                        "type": 8,
+                        "boolean": true
+                      },
+                      {
+                        "type": 8,
+                        "boolean": false
+                      }
+                    ]
               }
             ]
           }

@@ -15,6 +15,8 @@
 homepage: 'https://www.rokt.com'
 documentation: 'https://docs.rokt.com/docs/developers/integration-guides/third-party-integrations/google-tag-manager/google-tag-template'
 versions:
+  - sha: 38fdf8e235ba09a707bf7197317e259f5b81a321
+    changeNotes: Add roktInitComplete event to data layer
   - sha: 7e4ac28d10a00009393ce29a39822af1a9036ee8
     changeNotes: Remove first party domain field
   - sha: 4698a2bf1217130304538297a2520c6acc1af88e

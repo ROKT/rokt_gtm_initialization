@@ -1,4 +1,4 @@
-# Google Tag Template - Initialization
+# Google Tag Template - Initialization and Log Page View
 
 ## Resident Experts
 

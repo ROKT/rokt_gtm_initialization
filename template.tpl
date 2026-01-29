@@ -137,7 +137,7 @@ setInWindow('isLogPageView', data.isLogPageView, true);
 log('mParticle GTM template: injecting wrapper script');
 
 injectScript(
-  'https://apps.stage.rokt.com/store/js/gtm_wrapper_init.min.js',
+  'https://apps.rokt.com/store/js/gtm_wrapper_init.min.js',
   function() {
     log('mParticle GTM template: wrapper script loaded successfully');
 
@@ -453,7 +453,7 @@ ___WEB_PERMISSIONS___
             "listItem": [
               {
                 "type": 1,
-                "string": "https://apps.stage.rokt.com/store/js/gtm_wrapper_init.min.js"
+                "string": "https://*.rokt.com/*"
               }
             ]
           }

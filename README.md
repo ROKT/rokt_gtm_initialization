@@ -1,4 +1,4 @@
-# Google Tag Template - Initialization
+# Google Tag Template - Initialization and Log Page View
 
 ## Resident Experts
 
@@ -11,8 +11,8 @@ Rokt integrates with Google Tag Manager, enabling partners to set attributes and
 Partners can configure their tags on [Google's Console](https://tagmanager.google.com/gallery/#/?page=1) instead of managing the Rokt script directly.
 
 ### Steps to enable:
-1. Select the Initialization Tag Template from the [Google Community Template Gallery](https://tagmanager.google.com/gallery/#/?page=1) or import this .tpl file into your GTM workspace.
-2. Configure your tag with the proper API Key and desired settings. 
+1. Select the mParticle by Rokt - Initialization and Log Page View from the [Google Community Template Gallery](https://tagmanager.google.com/gallery/#/?page=1) or import this .tpl file into your GTM workspace.
+2. Configure your tag with the proper API Key and desired settings. Note: To enable Log Page View, check the Log Page View checkbox.
 3. Configure the trigger to load the SDK as the page is loaded. 
 4. Deploy the tag. 
 5. Verify and QA, you should see window.mParticle loaded on your webpage.

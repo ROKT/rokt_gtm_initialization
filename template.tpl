@@ -59,12 +59,12 @@ ___TEMPLATE_PARAMETERS___
         "macrosInSelect": false,
         "selectItems": [
           {
-            "value": "verbose",
-            "displayValue": "Verbose"
-          },
-          {
             "value": "warning",
             "displayValue": "Warning"
+          },
+          {
+            "value": "verbose",
+            "displayValue": "Verbose"
           },
           {
             "value": "none",
@@ -75,7 +75,7 @@ ___TEMPLATE_PARAMETERS___
       },
       {
         "type": "LABEL",
-        "name": "label2a",
+        "name": "flagsLabel",
         "displayName": "Flags"
       },
       {
